@@ -8,9 +8,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Dependencies
-        run: npm install
+        run: npm install && ls -lah
       - name: Create changelog
-        run: sh scripts/create-changelog.sh
+        run: sh ./scripts/create-changelog.sh
       - name: LS
         run: tree
       # - name: Write .npmrc
