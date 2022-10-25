@@ -8,11 +8,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Dependencies
-        run: npm install && ls -lah
+        run: yarn install && ls -lah
       - name: Create changelog
         run: bash ./scripts/create-changelog.sh
+      - name: Bump Version
+        run: yarn changeset version
       - name: LS
-        run: tree
+        run: ls -lah && cat CHANGELOG.md
+      - run: git describe --tags --abbrev=0
+      - run: git log $(git describe --tags --abbrev=0)..HEAD --no-merges --oneline --pretty=tformat:"%s"
       # - name: Write .npmrc
       #   run: echo '//verdaccio.urip13.duckdns.org/:_authToken="${{ secrets.NPM_TOKEN }}"' >> ~/.npmrc
       # - name: Publish
