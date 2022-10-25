@@ -1,0 +1,21 @@
+name: CI
+on:
+  workflow_dispatch:
+jobs:
+  publish_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        uses: npm install
+      # - name: Create changelog
+      #   run: sh scripts/create-changelog.sh
+      # - name: LS
+      #   run: tree
+      # - name: Write .npmrc
+      #   run: echo '//verdaccio.urip13.duckdns.org/:_authToken="${{ secrets.NPM_TOKEN }}"' >> ~/.npmrc
+      # - name: Publish
+      #   run: npm publish --registry https://verdaccio.urip13.duckdns.org/
+      # - name: Publish
+      #   run: npm publish --registry https://verdaccio.urip13.duckdns.org/
